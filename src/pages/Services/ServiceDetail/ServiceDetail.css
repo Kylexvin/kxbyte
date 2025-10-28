@@ -2,47 +2,50 @@
   background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  padding-top: 80px; /* Add padding for fixed header */
+  padding-top: 0;
 }
 
 .service-hero {
   background: 
-    linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)),
-    url('../../../assets/images/hero-bg.jpg') center/cover no-repeat,
-    linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-  background-blend-mode: overlay;
-  padding: 4rem 2rem; /* Reduced top padding since we have global padding */
+    linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.9)),
+    url('../../../assets/images/hero-bg.jpg') center/cover no-repeat;
+  padding: 6rem 2rem 4rem;
   text-align: center;
   border-bottom: 1px solid var(--glass-border);
   position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ... rest of your ServiceDetail.css remains the same ... */
-
-@media (max-width: 768px) {
-  .service-detail {
-    padding-top: 120px; /* More padding on mobile */
-  }
-  
-  .service-hero {
-    padding: 5rem 1rem 3rem 1rem;
-  }
-  /* ... rest of mobile styles ... */
+/* Fallback if image doesn't load */
+.service-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  z-index: -1;
 }
 
-@media (max-width: 480px) {
-  .service-detail {
-    padding-top: 140px; /* Even more padding for very small screens */
-  }
-  
-  .service-hero {
-    padding: 4rem 1rem 2rem 1rem;
-  }
-  /* ... rest of mobile styles ... */
+.service-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
 }
+
+.service-icon {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 20px rgba(240, 64, 0, 0.5);
+}
+
 .service-hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
   background: linear-gradient(90deg, var(--text-primary), var(--accent));
   -webkit-background-clip: text;
   background-clip: text;
@@ -51,12 +54,13 @@
 }
 
 .service-hero p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--text-secondary);
   line-height: 1.6;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
+/* ... rest of your CSS remains the same ... */
 .service-content {
   max-width: 1200px;
   margin: 0 auto;
