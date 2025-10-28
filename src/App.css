@@ -10,3 +10,27 @@ body {
   font-family: 'Nasalization', sans-serif;
 }
 
+/* Your CSS variables and global styles */
+:root {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #111111;
+  --accent: #F04000;
+  --text-primary: #FFFFFF;
+  --text-secondary: #B0B0B0;
+  --text-muted: #666666;
+  --glass-bg: rgba(17, 17, 17, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}

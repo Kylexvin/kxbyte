@@ -1,0 +1,97 @@
+.services-section {
+  padding: 5rem 2rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--text-primary), var(--text-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: auto;
+  margin: 0 auto;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-icon {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  font-weight: 300;
+}
+
+.service-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.service-desc {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.service-features {
+  margin: 1.5rem 0;
+  padding-left: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.service-features li {
+  margin-bottom: 0.6rem;
+  position: relative;
+  list-style-type: none;
+}
+
+.service-features li:before {
+  content: "→";
+  color: var(--accent);
+  position: absolute;
+  left: -1.2rem;
+}
+
+.service-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.service-link:hover {
+  text-decoration: underline;
+}

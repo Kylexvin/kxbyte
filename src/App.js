@@ -1,43 +1,39 @@
-import React from 'react'; 
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import NavBar from './components/NavBar';
-import HeroSection from './components/HeroSection';
-import ProductsSection from './components/ProductsSection';
-import Footer from './components/Footer';
-import WebDevDetailsPage from './components/WebDevDetailsPage';
-import SEODetailsPage from './components/SEODetailsPage';
-import GraphicDesignDetailsPage from './components/GraphicDesignDetailsPage';
-import BrandingDetailsPage from './components/BrandingDetailsPage';
-import ContactUs from './components/ContactUs'; 
-import ScrollToTop from './components/ScrollToTop'; 
-import AboutUs from './components/AboutUs';
-import CaseStudies from './components/CaseStudies';
+import Home from './pages/Home/Home';
+import WebDevelopment from './pages/Services/ServiceDetail/WebDevelopment';
+import Branding from './pages/Services/ServiceDetail/Branding';
+import SEO from './pages/Services/ServiceDetail/SEO';
+import Enterprise from './pages/Services/ServiceDetail/Enterprise';
+import WebPlatforms from './pages/Services/ServiceDetail/WebPlatforms';
+import MobileSolutions from './pages/Services/ServiceDetail/MobileSolutions';
+import Contact from './pages/Contact/Contact';
+import './App.css';
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <NavBar />
-      <div className="pt-[70px]"> {/* Adjust this value based on your navbar height */}
+    <div className="App">
+      <Router>
         <Routes>
-          <Route path="/" element={
-            <>
-              <HeroSection />
-              <ProductsSection />
-              <ContactUs />
-              <Footer />
-            </>
-          } />
-          <Route path="/web-development" element={<WebDevDetailsPage />} />
-          <Route path="/seo-services" element={<SEODetailsPage />} />
-          <Route path="/graphic-design" element={<GraphicDesignDetailsPage />} />
-          <Route path="/branding-solutions" element={<BrandingDetailsPage />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/cases" element={<CaseStudies />} />
+          {/* Home Page */}
+          <Route path="/" element={<Home />} />
+          
+          {/* Service Detail Pages */}
+          <Route path="/services/web-development" element={<WebDevelopment />} />
+          <Route path="/services/branding" element={<Branding />} />
+          <Route path="/services/seo" element={<SEO />} />
+          <Route path="/services/enterprise" element={<Enterprise />} />
+          <Route path="/services/web-platforms" element={<WebPlatforms />} />
+          <Route path="/services/mobile-solutions" element={<MobileSolutions />} />
+          
+          {/* Contact Page */}
+          <Route path="/contact" element={<Contact />} />
+          
+          {/* Fallback to Home */}
+          <Route path="*" element={<Home />} />
         </Routes>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 

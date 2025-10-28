@@ -1,0 +1,101 @@
+.card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  width: 300px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(240, 64, 0, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+.card:hover {
+  box-shadow: 0 0 30px var(--accent);
+  transform: translateY(-8px);
+  border-color: var(--accent);
+}
+
+.card--active {
+  box-shadow: 0 0 25px var(--accent);
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.card h3 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.card:hover h3 {
+  color: var(--accent);
+}
+
+.card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.card:hover p {
+  color: var(--text-primary);
+}
+
+.card button {
+  background-color: var(--accent);
+  color: var(--bg-primary);
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+}
+
+.card button:hover {
+  background-color: #ff5511;
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(240, 64, 0, 0.4);
+}
+
+/* Hide cards on mobile */
+@media (max-width: 480px) {
+  .card {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 280px;
+  }
+  
+  .card-wrapper {
+    margin-bottom: 1rem;
+  }
+}
