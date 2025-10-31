@@ -39,16 +39,16 @@ const Home = () => {
       title: "Trust & Reliability",
       description: "We deliver on our promises with transparent communication and consistent results that exceed expectations."
     },
-    {
-      icon: "💡",
-      title: "Innovation First",
-      description: "Staying ahead of tech trends to provide cutting-edge solutions that give you a competitive advantage."
-    },
-    {
-      icon: "⚡",
-      title: "Fast & Efficient",
-      description: "Quick turnaround times without compromising quality. We value your time as much as you do."
-    }
+    // {
+    //   icon: "💡",
+    //   title: "Innovation First",
+    //   description: "Staying ahead of tech trends to provide cutting-edge solutions that give you a competitive advantage."
+    // },
+    // {
+    //   icon: "⚡",
+    //   title: "Fast & Efficient",
+    //   description: "Quick turnaround times without compromising quality. We value your time as much as you do."
+    // }
   ];
 
   // Featured brands/clients
@@ -129,7 +129,7 @@ const Home = () => {
                 variant="primary" 
                 onClick={handlePrimaryClick}
               >
-                → View Product Stack
+                → Products
               </Button>
               <Button 
                 variant="secondary" 
@@ -186,7 +186,7 @@ const Home = () => {
       </div>
 
       {/* Featured Work Section */}
-      <section className="featured-section">
+      {/* <section className="featured-section">
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Featured Work</h2>
@@ -203,7 +203,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
       <section className="testimonials-section">

@@ -3,7 +3,7 @@
   background: 
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
     url('../../assets/images/hero-bg.jpg') center/cover no-repeat;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,10 +83,10 @@
 .section-title {
   font-size: clamp(2rem, 4vw, 2.5rem);
   margin-bottom: 1rem;
-  background: linear-gradient(90deg, var(--text-primary), var(--accent));
+  /* background: linear-gradient(90deg, var(--text-primary), var(--accent)); */
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: var(--accent) !important;
 }
 
 .section-subtitle {

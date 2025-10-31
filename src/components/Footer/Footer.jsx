@@ -144,7 +144,7 @@ const Footer = () => {
 
             {/* Contact Info */}
             <div className="footer-section">
-              <h3 className="section-title">Get In Touch</h3>
+              {/* <h3 className="section-title">Get In Touch</h3>
               <div className="contact-info">
                 {contactInfo.map((contact, index) => (
                   <div key={index} className="contact-item">
@@ -161,7 +161,7 @@ const Footer = () => {
                     </div>
                   </div>
                 ))}
-              </div>
+              </div> */}
               
               <div className="newsletter">
                 <h4>Stay Updated</h4>
@@ -185,7 +185,7 @@ const Footer = () => {
         <div className="container">
           <div className="footer-bottom-content">
             <div className="copyright">
-              &copy; 2025 KXBYTE. All rights reserved.
+              &copy; {new Date().getFullYear()} KXBYTE. All rights reserved.
             </div>
             <div className="footer-legal">
               <button 

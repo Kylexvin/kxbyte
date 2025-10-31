@@ -1,0 +1,191 @@
+.branding-portfolio {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.portfolio-hero {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, #1a1a1a 100%);
+  padding: 100px 0 60px;
+  text-align: center;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.portfolio-hero-content .service-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.portfolio-hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.portfolio-hero-content p {
+  font-size: 1.3rem;
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.portfolio-content {
+  padding: 60px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Pinterest Style Grid */
+.pinterest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.pin-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.pin-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px rgba(240, 64, 0, 0.15);
+}
+
+.pin-image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.pin-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.pin-card:hover .pin-image img {
+  transform: scale(1.03);
+}
+
+.pin-title {
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid var(--glass-border);
+}
+
+.pin-title span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Masonry effect for varied heights - optional */
+.pinterest-grid {
+  grid-auto-rows: auto;
+}
+
+.pin-card:nth-child(3n+1) {
+  grid-row: span 2;
+}
+
+.pin-card:nth-child(5n+2) {
+  grid-row: span 3;
+}
+
+/* Alternative: Fixed aspect ratio for consistency */
+.pin-image {
+  aspect-ratio: 4/5; /* Instagram/Pinterest style ratio */
+}
+
+.pin-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .pinterest-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-hero {
+    padding: 80px 0 40px;
+  }
+
+  .portfolio-hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .portfolio-hero-content p {
+    font-size: 1.1rem;
+  }
+
+  .pinterest-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  .portfolio-content {
+    padding: 40px 15px;
+  }
+
+  .pin-title {
+    padding: 15px;
+  }
+
+  .pin-title span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .pinterest-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .pin-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+/* Simple loading state */
+.pin-image img {
+  background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
+  background-size: 400% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}

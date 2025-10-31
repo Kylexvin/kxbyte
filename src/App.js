@@ -9,6 +9,10 @@ import Enterprise from './pages/Services/ServiceDetail/Enterprise';
 import WebPlatforms from './pages/Services/ServiceDetail/WebPlatforms';
 import MobileSolutions from './pages/Services/ServiceDetail/MobileSolutions';
 import Contact from './pages/Contact/Contact';
+// portfolios
+import BrandingPortfolio from './pages/Portfolio/BrandingPortfolio';
+
+
 import './App.css';
 
 function App() {
@@ -25,6 +29,9 @@ function App() {
           <Route path="/services/web-platforms" element={<WebPlatforms />} />
           <Route path="/services/mobile-solutions" element={<MobileSolutions />} />
           <Route path="/contact" element={<Contact />} />
+
+          // Add this route to your existing Routes
+          <Route path="/portfolio/branding" element={<BrandingPortfolio />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </Router>
