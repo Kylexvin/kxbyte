@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 100px; /* Match header height + extra space */
+  padding-top: 50px; /* Match header height + extra space */
   padding-bottom: 4rem;
   position: relative;
 }
@@ -260,7 +260,7 @@
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
   .hero-section {
-    padding: 100px 0 3rem;
+    padding: 80px 0 3rem;
     min-height: auto;
   }
 
@@ -310,7 +310,7 @@
 
 @media (max-width: 480px) {
   .hero-section {
-    padding: 90px 0 2rem;
+    padding: 100px 0 0.5rem;
   }
 
   .hero {
@@ -350,5 +350,273 @@
   
   .section {
     padding: 2rem 0.5rem;
+  }
+}
+/* Benefits Section */
+.benefits-section {
+  padding: 80px 0;
+  background: var(--section-bg);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.benefit-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+}
+
+.benefit-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Audience Section */
+.audience-section {
+  padding: 80px 0;
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.audience-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  text-align: center;
+}
+
+.audience-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.audience-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.audience-features li {
+  padding: 0.3rem 0;
+  color: var(--text-secondary);
+}
+
+.audience-cta {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Tools Section */
+.tools-section {
+  padding: 80px 0;
+  background: var(--section-bg);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.tool-category {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+.tool-category h3 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.tool-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tool-item {
+  background: rgba(240, 64, 0, 0.1);
+  color: var(--accent);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid var(--accent);
+}
+
+/* Pricing Section */
+.pricing-section {
+  padding: 80px 0;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.pricing-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  position: relative;
+  text-align: center;
+}
+
+.pricing-card.popular {
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.pricing-header {
+  margin-bottom: 2rem;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin: 1rem 0;
+}
+
+.tier-description {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.features-list li {
+  padding: 0.5rem 0;
+  color: var(--text-secondary);
+}
+
+.pricing-cta {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 80px 0;
+  background: var(--section-bg);
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 3rem auto 0;
+}
+
+.faq-item {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.faq-question {
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+  background: rgba(240, 64, 0, 0.05);
+}
+
+.faq-toggle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.faq-answer {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--text-secondary);
+}
+
+/* Final CTA */
+.final-cta {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 3rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+.final-cta h3 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.final-cta p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .benefits-grid,
+  .audience-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pricing-card.popular {
+    transform: none;
+  }
+  
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .final-cta {
+    padding: 2rem 1rem;
   }
 }

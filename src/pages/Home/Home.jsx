@@ -10,6 +10,7 @@ import './Home.css';
 const Home = () => {
   const [activeCard, setActiveCard] = useState(null);
   const [showQuoteModal, setShowQuoteModal] = useState(false);
+  const [activeFaq, setActiveFaq] = useState(null);
 
   const heroCards = [
     {
@@ -32,36 +33,69 @@ const Home = () => {
     }
   ];
 
-  // Why Choose KXBYTE data
-  const trustPoints = [
+  // What You Get / Benefits Section
+  const benefits = [
+    {
+      icon: "🚀",
+      title: "Faster Time to Market",
+      description: "Get your digital products launched quickly without sacrificing quality or performance."
+    },
+    {
+      icon: "💰",
+      title: "Cost-Effective Solutions",
+      description: "Maximize your ROI with efficient development processes and scalable architecture."
+    },
+    {
+      icon: "📈",
+      title: "Proven Results",
+      description: "Data-driven approaches that deliver measurable growth and performance improvements."
+    },
     {
       icon: "🛡️",
-      title: "Trust & Reliability",
-      description: "We deliver on our promises with transparent communication and consistent results that exceed expectations."
+      title: "Reliable Support",
+      description: "Ongoing maintenance and support to keep your systems running smoothly."
     },
-    // {
-    //   icon: "💡",
-    //   title: "Innovation First",
-    //   description: "Staying ahead of tech trends to provide cutting-edge solutions that give you a competitive advantage."
-    // },
-    // {
-    //   icon: "⚡",
-    //   title: "Fast & Efficient",
-    //   description: "Quick turnaround times without compromising quality. We value your time as much as you do."
-    // }
+    {
+      icon: "⚡",
+      title: "High Performance",
+      description: "Lightning-fast applications optimized for speed and user experience."
+    },
+    {
+      icon: "🔒",
+      title: "Secure & Scalable",
+      description: "Enterprise-grade security with architecture that grows with your business."
+    }
   ];
 
-  // Featured brands/clients
-  const featuredBrands = [
-    { name: "TechCorp", logo: "🚀", description: "E-commerce platform" },
-    { name: "DesignHub", logo: "🎨", description: "Brand identity system" },
-    { name: "Local Cafe", logo: "☕", description: "Website & marketing" },
-    { name: "StartupXYZ", logo: "💼", description: "Mobile app development" },
-    { name: "EduTech", logo: "📚", description: "Learning platform" },
-    { name: "HealthPlus", logo: "🏥", description: "Healthcare portal" }
+  // Target Audience / For Who? Section
+  const targetAudiences = [
+    {
+      icon: "🏢",
+      title: "Small Businesses",
+      description: "Affordable digital solutions to establish your online presence and compete effectively.",
+      features: ["Basic Websites", "Local SEO", "Brand Identity", "Social Media Setup"]
+    },
+    {
+      icon: "🚀",
+      title: "Startups",
+      description: "Rapid prototyping and scalable architecture to support your growth trajectory.",
+      features: ["MVP Development", "Tech Stack Consulting", "Scalable Architecture", "Investor-Ready Products"]
+    },
+    {
+      icon: "🎨",
+      title: "Creators & Agencies",
+      description: "Custom platforms and tools to showcase your work and streamline your operations.",
+      features: ["Portfolio Sites", "Content Management", "E-commerce", "Booking Systems"]
+    },
+    {
+      icon: "🏪",
+      title: "Local Brands",
+      description: "Location-based marketing and digital storefronts to connect with your community.",
+      features: ["Local SEO", "Google Business", "Review Management", "Community Engagement"]
+    }
   ];
 
-  // Testimonials from Google My Business
+  // Testimonials
   const testimonials = [
     {
       name: "Sarah M.",
@@ -86,8 +120,105 @@ const Home = () => {
     }
   ];
 
+  // Tools & Integration
+  const tools = [
+    {
+      category: "Development",
+      items: ["React", "Node.js", "Python", "MongoDB", "PostgreSQL", "AWS"]
+    },
+    {
+      category: "Design",
+      items: ["Figma", "Adobe Creative Suite", "Webflow", "Sketch"]
+    },
+    {
+      category: "Marketing",
+      items: ["Google Analytics", "SEMrush", "HubSpot", "Mailchimp", "Meta Business"]
+    },
+    {
+      category: "Project Management",
+      items: ["Jira", "Trello", "Slack", "Notion", "GitHub"]
+    }
+  ];
+
+  // Pricing Tiers
+  const pricingTiers = [
+    {
+      name: "Starter",
+      price: "KSH 19,499",
+      description: "Perfect for small businesses and personal brands",
+      features: [
+        "5-Page Website",
+        "Basic SEO Setup",
+        "Mobile Responsive",
+        "Contact Form",
+        "1 Month Support",
+        "Basic Analytics"
+      ],
+      cta: "Get Started",
+      popular: false
+    },
+    {
+      name: "Business",
+      price: "KSH 29,999",
+      description: "Ideal for growing businesses and startups",
+      features: [
+        "10-Page Website",
+        "Advanced SEO",
+        "E-commerce Ready",
+        "CMS Integration",
+        "3 Months Support",
+        "Advanced Analytics",
+        "Brand Guide",
+        "Social Media Setup"
+      ],
+      cta: "Most Popular",
+      popular: true
+    },
+    {
+      name: "Enterprise",
+      price: "KSH 49,999+",
+      description: "Custom solutions for established businesses",
+      features: [
+        "Custom Web App",
+        "Full Stack Development",
+        "API Integration",
+        "6 Months Support",
+        "Performance Optimization",
+        "Security Audit",
+        "Dedicated Team",
+        "24/7 Monitoring"
+      ],
+      cta: "Contact Sales",
+      popular: false
+    }
+  ];
+
+  // FAQs
+  const faqs = [
+    {
+      question: "How long does a typical project take?",
+      answer: "Most projects range from 4-12 weeks depending on complexity. We provide detailed timelines during our initial consultation."
+    },
+    {
+      question: "Do you offer ongoing support?",
+      answer: "Yes, we offer flexible support packages from basic maintenance to full-scale managed services."
+    },
+    {
+      question: "Can you work with our existing team?",
+      answer: "Absolutely! We seamlessly integrate with your current team and workflows."
+    },
+    {
+      question: "What's your payment structure?",
+      answer: "We typically work with 50% upfront and 50% upon completion, with custom payment plans available for larger projects."
+    },
+    {
+      question: "Do you provide source code?",
+      answer: "Yes, you own all the code and assets we create for your project."
+    }
+  ];
+
   const handlePrimaryClick = () => {
-    document.getElementById('services-section')?.scrollIntoView({ 
+    document.getElementById('what-you-get')?.scrollIntoView({ 
       behavior: 'smooth' 
     });
   };
@@ -106,6 +237,10 @@ const Home = () => {
 
   const handleCardLeave = () => {
     setActiveCard(null);
+  };
+
+  const toggleFaq = (index) => {
+    setActiveFaq(activeFaq === index ? null : index);
   };
 
   const renderStars = (rating) => {
@@ -129,7 +264,7 @@ const Home = () => {
                 variant="primary" 
                 onClick={handlePrimaryClick}
               >
-                → Products
+                → See Benefits
               </Button>
               <Button 
                 variant="secondary" 
@@ -161,56 +296,69 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why Choose KXBYTE Section */}
-      <section className="why-section">
+      {/* What You Get / Benefits Section */}
+      <section id="what-you-get" className="benefits-section">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Why Choose KXBYTE</h2>
-            <p className="section-subtitle">Building trust through innovation and reliability</p>
+            <h2 className="section-title">What You Get With KXBYTE</h2>
+            <p className="section-subtitle">Comprehensive solutions that drive real business results</p>
           </div>
           
-          <div className="trust-grid">
-            {trustPoints.map((point, index) => (
-              <div key={index} className="trust-card">
-                <div className="trust-icon">{point.icon}</div>
-                <h3>{point.title}</h3>
-                <p>{point.description}</p>
+          <div className="benefits-grid">
+            {benefits.map((benefit, index) => (
+              <div key={index} className="benefit-card">
+                <div className="benefit-icon">{benefit.icon}</div>
+                <h3>{benefit.title}</h3>
+                <p>{benefit.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <div id="services-section">
-        <Services />
-      </div>
-
-      {/* Featured Work Section */}
-      {/* <section className="featured-section">
+      {/* For Who? / Target Audience Section */}
+      <section className="audience-section">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Featured Work</h2>
-            <p className="section-subtitle">Brands we've partnered with to create digital excellence</p>
+            <h2 className="section-title">Who We Work With</h2>
+            <p className="section-subtitle">Tailored solutions for different business needs</p>
           </div>
           
-          <div className="brands-grid">
-            {featuredBrands.map((brand, index) => (
-              <div key={index} className="brand-card">
-                <div className="brand-logo">{brand.logo}</div>
-                <h4>{brand.name}</h4>
-                <p>{brand.description}</p>
+          <div className="audience-grid">
+            {targetAudiences.map((audience, index) => (
+              <div key={index} className="audience-card">
+                <div className="audience-icon">{audience.icon}</div>
+                <h3>{audience.title}</h3>
+                <p>{audience.description}</p>
+                <ul className="audience-features">
+                  {audience.features.map((feature, featureIndex) => (
+                    <li key={featureIndex}>✓ {feature}</li>
+                  ))}
+                </ul>
+                <Button 
+                  variant="outline" 
+                  onClick={handleGetQuote}
+                  className="audience-cta"
+                >
+                  Get Quote for {audience.title}
+                </Button>
               </div>
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
+
+      {/* Services Section */}
+      <div id="services-section">
+        <Services />
+      </div>
 
       {/* Testimonials Section */}
       <section className="testimonials-section">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Client Testimonials</h2>
-            <p className="section-subtitle">What our clients say about working with us</p>
+            <h2 className="section-title">Client Success Stories</h2>
+            <p className="section-subtitle">Join hundreds of satisfied clients who trust KXBYTE</p>
           </div>
           
           <div className="testimonials-grid">
@@ -229,6 +377,109 @@ const Home = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tools & Integration Section */}
+      <section className="tools-section">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Our Tech Stack & Tools</h2>
+            <p className="section-subtitle">Modern technologies for modern solutions</p>
+          </div>
+          
+          <div className="tools-grid">
+            {tools.map((toolCategory, index) => (
+              <div key={index} className="tool-category">
+                <h3>{toolCategory.category}</h3>
+                <div className="tool-items">
+                  {toolCategory.items.map((item, itemIndex) => (
+                    <span key={itemIndex} className="tool-item">{item}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="pricing-section">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Simple, Transparent Pricing</h2>
+            <p className="section-subtitle">Choose the plan that fits your business needs</p>
+          </div>
+          
+          <div className="pricing-grid">
+            {pricingTiers.map((tier, index) => (
+              <div key={index} className={`pricing-card ${tier.popular ? 'popular' : ''}`}>
+                {tier.popular && <div className="popular-badge">Most Popular</div>}
+                <div className="pricing-header">
+                  <h3>{tier.name}</h3>
+                  <div className="price">{tier.price}</div>
+                  <p className="tier-description">{tier.description}</p>
+                </div>
+                <ul className="features-list">
+                  {tier.features.map((feature, featureIndex) => (
+                    <li key={featureIndex}>✓ {feature}</li>
+                  ))}
+                </ul>
+                <Button 
+                  variant={tier.popular ? "primary" : "outline"}
+                  onClick={handleGetQuote}
+                  className="pricing-cta"
+                >
+                  {tier.cta}
+                </Button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="faq-section">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Frequently Asked Questions</h2>
+            <p className="section-subtitle">Everything you need to know about working with us</p>
+          </div>
+          
+          <div className="faq-list">
+            {faqs.map((faq, index) => (
+              <div key={index} className="faq-item">
+                <div 
+                  className="faq-question" 
+                  onClick={() => toggleFaq(index)}
+                >
+                  <h4>{faq.question}</h4>
+                  <span className="faq-toggle">
+                    {activeFaq === index ? '−' : '+'}
+                  </span>
+                </div>
+                {activeFaq === index && (
+                  <div className="faq-answer">
+                    <p>{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Final CTA */}
+          <div className="final-cta">
+            <h3>Ready to Transform Your Business?</h3>
+            <p>Let's discuss your project and create something amazing together</p>
+            <div className="cta-buttons">
+              <Button variant="primary" onClick={handleGetQuote}>
+                → Start Your Project
+              </Button>
+              <Button variant="outline" onClick={() => document.getElementById('services-section').scrollIntoView({ behavior: 'smooth' })}>
+                → Explore Services
+              </Button>
+            </div>
           </div>
         </div>
       </section>
