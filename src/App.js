@@ -1,7 +1,7 @@
+// App.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-
 import './App.css';
 
 // ==================== Pages & Components ====================
@@ -20,22 +20,23 @@ import AdminDashboard from './pages/Admin/AdminDashboard';
 import ApplicationsPage from './pages/Admin/ApplicationsPage';
 import AnalyticsPage from './pages/Admin/AnalyticsPage';
 import ShopManagement from './pages/Admin/ShopManagement';
+
 // ==================== AXIOS CONFIG ====================
 axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'https://kxtill.onrender.com/api';
 axios.defaults.timeout = 10000;
 
 axios.interceptors.request.use(
-  config => {
+  (config) => {
     const token = localStorage.getItem('adminToken');
     if (token) config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
-  error => Promise.reject(error)
+  (error) => Promise.reject(error)
 );
 
 axios.interceptors.response.use(
-  response => response,
-  error => {
+  (response) => response,
+  (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('adminToken');
       localStorage.removeItem('adminUser');
@@ -89,19 +90,15 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  return (
-    <AuthContext.Provider
-      value={{
-        user,
-        loading,
-        login,
-        logout,
-        isAuthenticated: !!user,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  const value = {
+    user,
+    loading,
+    login,
+    logout,
+    isAuthenticated: !!user,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 // ==================== PROTECTED ROUTE ====================
@@ -122,7 +119,7 @@ function App() {
       <AuthProvider>
         <Router>
           <Routes>
-            {/* Public Routes */}
+            {/* ---------- Public Routes ---------- */}
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/services/web-development" element={<WebDevelopment />} />
@@ -134,11 +131,11 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/portfolio/branding" element={<BrandingPortfolio />} />
 
-            {/* Auth Routes */}
+            {/* ---------- Auth Routes ---------- */}
             <Route path="/admin/login" element={<Login />} />
             <Route path="/login" element={<Login />} />
 
-            {/* Protected Admin Routes */}
+            {/* ---------- Protected Admin Routes ---------- */}
             <Route
               path="/admin"
               element={
@@ -163,15 +160,16 @@ function App() {
                 </ProtectedRoute>
               }
             />
-<Route
-  path="/admin/shops"
-  element={
-    <ProtectedRoute>
-      <ShopManagement />
-    </ProtectedRoute>
-  }
-/>
-            {/* Fallback */}
+            <Route
+              path="/admin/shops"
+              element={
+                <ProtectedRoute>
+                  <ShopManagement />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* ---------- Fallback ---------- */}
             <Route path="*" element={<Home />} />
           </Routes>
         </Router>
