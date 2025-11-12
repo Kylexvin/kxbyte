@@ -6,18 +6,18 @@ const AnalyticsPage = () => {
   const [analytics, setAnalytics] = useState({});
   const [timeRange, setTimeRange] = useState('month');
 
-  const fetchAnalytics = async () => {
-    try {
-      const response = await axios.get(`/api/analytics?range=${timeRange}`);
-      setAnalytics(response.data);
-    } catch (error) {
-      console.error('Error fetching analytics:', error);
-    }
-  };
-
   useEffect(() => {
+    const fetchAnalytics = async () => {
+      try {
+        const response = await axios.get(`/analytics?range=${timeRange}`);
+        setAnalytics(response.data);
+      } catch (error) {
+        console.error('Error fetching analytics:', error);
+      }
+    };
+
     fetchAnalytics();
-  }, [timeRange]);
+  }, [timeRange]); // ✅ timeRange is the only dependency
 
   return (
     <div className="analytics-page">
@@ -34,19 +34,19 @@ const AnalyticsPage = () => {
       <div className="analytics-grid">
         <div className="metric-card">
           <h3>New Shops</h3>
-          <div className="metric-value">{analytics.newShops || 0}</div>
+          <div className="metric-value">{analytics.newShops ?? 0}</div>
         </div>
         <div className="metric-card">
           <h3>Revenue</h3>
-          <div className="metric-value">${analytics.revenue || 0}</div>
+          <div className="metric-value">${analytics.revenue ?? 0}</div>
         </div>
         <div className="metric-card">
           <h3>Active Users</h3>
-          <div className="metric-value">{analytics.activeUsers || 0}</div>
+          <div className="metric-value">{analytics.activeUsers ?? 0}</div>
         </div>
         <div className="metric-card">
           <h3>Conversion Rate</h3>
-          <div className="metric-value">{analytics.conversionRate || 0}%</div>
+          <div className="metric-value">{analytics.conversionRate ?? 0}%</div>
         </div>
       </div>
     </div>
