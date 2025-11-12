@@ -18,10 +18,7 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -30,12 +27,10 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('https://formspree.io/f/mqalydvo', { // Replace with your Formspree ID
+      const response = await fetch('https://formspree.io/f/mqalydvo', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
       });
 
       if (response.ok) {
@@ -49,10 +44,8 @@ const Contact = () => {
           timeline: '',
           message: ''
         });
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
+      } else setSubmitStatus('error');
+    } catch (err) {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -60,61 +53,27 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    {
-      icon: '📧',
-      title: 'Email Us',
-      details: 'info@kxbyte.com',
-      link: 'mailto:info@kxbyte.com'
-    },
-    {
-      icon: '📞',
-      title: 'Call Us',
-      details: '+254 712 345 678',
-      link: 'tel:+254712345678'
-    },
-    {
-      icon: '📍',
-      title: 'Visit Us',
-      details: 'Nairobi, Kenya',
-      link: 'https://maps.google.com'
-    },
-    {
-      icon: '🕒',
-      title: 'Working Hours',
-      details: 'Mon - Fri: 9AM - 6PM EAT',
-      link: null
-    }
+    { iconClass: 'fas fa-envelope', title: 'Email Us', details: 'info@kxbyte.com', link: 'mailto:info@kxbyte.com' },
+    { iconClass: 'fas fa-phone', title: 'Call Us', details: '+254 712 345 678', link: 'tel:+254712345678' },
+    { iconClass: 'fas fa-map-marker-alt', title: 'Visit Us', details: 'Nairobi, Kenya', link: 'https://maps.google.com/?q=Nairobi,Kenya' },
+    { iconClass: 'fas fa-clock', title: 'Working Hours', details: 'Mon - Fri: 9AM - 6PM EAT', link: null }
   ];
 
-  const services = [
-    'Web Development',
-    'Mobile App Development',
-    'Brand Identity',
-    'SEO & Marketing',
-    'Enterprise Systems',
-    'Other'
-  ];
+  const services = ['Web Development','Mobile App Development','Brand Identity','SEO & Marketing','Enterprise Systems','Other'];
+  const budgets = ['Less than $5,000','$5,000 - $15,000','$15,000 - $30,000','$30,000 - $50,000','$50,000+','Not sure yet'];
+  const timelines = ['Urgent (1-4 weeks)','Standard (1-3 months)','Flexible (3-6 months)','Just planning phase'];
 
-  const budgets = [
-    'Less than $5,000',
-    '$5,000 - $15,000',
-    '$15,000 - $30,000',
-    '$30,000 - $50,000',
-    '$50,000+',
-    'Not sure yet'
-  ];
-
-  const timelines = [
-    'Urgent (1-4 weeks)',
-    'Standard (1-3 months)',
-    'Flexible (3-6 months)',
-    'Just planning phase'
+  const socialLinks = [
+    { iconClass: 'fab fa-linkedin', url: 'https://linkedin.com/company/kxbyte', name: 'LinkedIn' },
+    { iconClass: 'fab fa-twitter', url: 'https://twitter.com/kxbyte', name: 'Twitter' },
+    { iconClass: 'fab fa-instagram', url: 'https://instagram.com/kxbyte', name: 'Instagram' },
+    { iconClass: 'fab fa-github', url: 'https://github.com/kxbyte', name: 'GitHub' }
   ];
 
   return (
     <div className="contact-page">
       <Header />
-      
+
       <section className="contact-hero">
         <div className="container">
           <div className="contact-hero-content">
@@ -131,18 +90,17 @@ const Contact = () => {
             <div className="contact-info">
               <h2>Get In Touch</h2>
               <p className="info-subtitle">
-                We're here to help you transform your ideas into digital reality. 
-                Reach out and let's start the conversation.
+                We're here to help you transform your ideas into digital reality. Reach out and let's start the conversation.
               </p>
 
               <div className="contact-methods">
-                {contactInfo.map((item, index) => (
-                  <div key={index} className="contact-method">
-                    <div className="method-icon">{item.icon}</div>
+                {contactInfo.map((item, idx) => (
+                  <div key={idx} className="contact-method">
+                    <i className={`${item.iconClass} method-icon`}></i>
                     <div className="method-details">
                       <h4>{item.title}</h4>
                       {item.link ? (
-                        <a href={item.link}>{item.details}</a>
+                        <a href={item.link} target="_blank" rel="noopener noreferrer">{item.details}</a>
                       ) : (
                         <p>{item.details}</p>
                       )}
@@ -154,10 +112,11 @@ const Contact = () => {
               <div className="social-links">
                 <h4>Follow Us</h4>
                 <div className="social-icons">
-                  <a href="#" className="social-link">LinkedIn</a>
-                  <a href="#" className="social-link">Twitter</a>
-                  <a href="#" className="social-link">Instagram</a>
-                  <a href="#" className="social-link">GitHub</a>
+                  {socialLinks.map((social, idx) => (
+                    <a key={idx} href={social.url} target="_blank" rel="noopener noreferrer" className="social-link" aria-label={social.name}>
+                      <i className={social.iconClass}></i>
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -168,57 +127,26 @@ const Contact = () => {
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="name">Full Name *</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="John Doe"
-                    />
+                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="John Doe" />
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="email">Email Address *</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="john@company.com"
-                    />
+                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required placeholder="john@company.com" />
                   </div>
                 </div>
 
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="company">Company</label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      placeholder="Your company name"
-                    />
+                    <input type="text" id="company" name="company" value={formData.company} onChange={handleChange} placeholder="Your company name" />
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="service">Service Interested In *</label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      required
-                    >
+                    <select id="service" name="service" value={formData.service} onChange={handleChange} required>
                       <option value="">Select a service</option>
-                      {services.map((service, index) => (
-                        <option key={index} value={service}>{service}</option>
-                      ))}
+                      {services.map((service, idx) => <option key={idx} value={service}>{service}</option>)}
                     </select>
                   </div>
                 </div>
@@ -226,74 +154,34 @@ const Contact = () => {
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="budget">Project Budget *</label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleChange}
-                      required
-                    >
+                    <select id="budget" name="budget" value={formData.budget} onChange={handleChange} required>
                       <option value="">Select budget range</option>
-                      {budgets.map((budget, index) => (
-                        <option key={index} value={budget}>{budget}</option>
-                      ))}
+                      {budgets.map((budget, idx) => <option key={idx} value={budget}>{budget}</option>)}
                     </select>
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="timeline">Timeline *</label>
-                    <select
-                      id="timeline"
-                      name="timeline"
-                      value={formData.timeline}
-                      onChange={handleChange}
-                      required
-                    >
+                    <select id="timeline" name="timeline" value={formData.timeline} onChange={handleChange} required>
                       <option value="">Select timeline</option>
-                      {timelines.map((timeline, index) => (
-                        <option key={index} value={timeline}>{timeline}</option>
-                      ))}
+                      {timelines.map((timeline, idx) => <option key={idx} value={timeline}>{timeline}</option>)}
                     </select>
                   </div>
                 </div>
 
                 <div className="form-group">
                   <label htmlFor="message">Project Details *</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="6"
-                    placeholder="Tell us about your project goals, requirements, and any specific features you need..."
-                  ></textarea>
+                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows="6" placeholder="Tell us about your project goals, requirements, and any specific features you need..."></textarea>
                 </div>
 
-                {submitStatus === 'success' && (
-                  <div className="form-message success">
-                    ✅ Thank you! Your message has been sent. We'll get back to you within 24 hours.
-                  </div>
-                )}
+                {submitStatus === 'success' && <div className="form-message success">✅ Thank you! Your message has been sent. We'll get back to you within 24 hours.</div>}
+                {submitStatus === 'error' && <div className="form-message error">❌ There was an error sending your message. Please try again or email us directly.</div>}
 
-                {submitStatus === 'error' && (
-                  <div className="form-message error">
-                    ❌ There was an error sending your message. Please try again or email us directly.
-                  </div>
-                )}
-
-                <Button 
-                  type="submit" 
-                  variant="primary" 
-                  className="submit-btn"
-                  disabled={isSubmitting}
-                >
+                <Button type="submit" variant="primary" className="submit-btn" disabled={isSubmitting}>
                   {isSubmitting ? 'Sending...' : '→ Send Message'}
                 </Button>
 
-                <p className="form-note">
-                  We respect your privacy. Your information is secure and will never be shared with third parties.
-                </p>
+                <p className="form-note">We respect your privacy. Your information is secure and will never be shared with third parties.</p>
               </form>
             </div>
           </div>

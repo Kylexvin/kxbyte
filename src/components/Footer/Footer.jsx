@@ -9,19 +9,14 @@ const Footer = () => {
     if (path.startsWith('/')) {
       navigate(path);
     } else {
-      // Scroll to section on home page
       if (window.location.pathname === '/') {
         const section = document.getElementById(path);
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (section) section.scrollIntoView({ behavior: 'smooth' });
       } else {
         navigate('/');
         setTimeout(() => {
           const section = document.getElementById(path);
-          if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
-          }
+          if (section) section.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       }
     }
@@ -44,37 +39,17 @@ const Footer = () => {
   ];
 
   const contactInfo = [
-    { 
-      icon: '📧', 
-      label: 'Email', 
-      value: 'info@kxbyte.com', 
-      link: 'mailto:info@kxbyte.com' 
-    },
-    { 
-      icon: '📞', 
-      label: 'Phone', 
-      value: '+254 712 345 678', 
-      link: 'tel:+254712345678' 
-    },
-    { 
-      icon: '📍', 
-      label: 'Address', 
-      value: 'Nairobi, Kenya', 
-      link: 'https://maps.google.com/?q=Nairobi,Kenya' 
-    },
-    { 
-      icon: '🕒', 
-      label: 'Working Hours', 
-      value: 'Mon - Fri: 9AM - 6PM EAT', 
-      link: null 
-    }
+    { iconClass: 'fas fa-envelope', label: 'Email', value: 'info@kxbyte.com', link: 'mailto:info@kxbyte.com' },
+    { iconClass: 'fas fa-phone', label: 'Phone', value: '+254 712 345 678', link: 'tel:+254712345678' },
+    { iconClass: 'fas fa-map-marker-alt', label: 'Address', value: 'Nairobi, Kenya', link: 'https://maps.google.com/?q=Nairobi,Kenya' },
+    { iconClass: 'fas fa-clock', label: 'Working Hours', value: 'Mon - Fri: 9AM - 6PM EAT', link: null }
   ];
 
   const socialLinks = [
-    { name: 'LinkedIn', icon: '💼', url: 'https://linkedin.com/company/kxbyte' },
-    { name: 'Twitter', icon: '🐦', url: 'https://twitter.com/kxbyte' },
-    { name: 'GitHub', icon: '💻', url: 'https://github.com/kxbyte' },
-    { name: 'Instagram', icon: '📷', url: 'https://instagram.com/kxbyte' }
+    { iconClass: 'fab fa-linkedin', url: 'https://linkedin.com/company/kxbyte', name: 'LinkedIn' },
+    { iconClass: 'fab fa-twitter', url: 'https://twitter.com/kxbyte', name: 'Twitter' },
+    { iconClass: 'fab fa-github', url: 'https://github.com/kxbyte', name: 'GitHub' },
+    { iconClass: 'fab fa-instagram', url: 'https://instagram.com/kxbyte', name: 'Instagram' }
   ];
 
   return (
@@ -93,16 +68,16 @@ const Footer = () => {
                 we create experiences that connect with your audience and deliver results.
               </p>
               <div className="social-links">
-                {socialLinks.map((social, index) => (
+                {socialLinks.map((social, idx) => (
                   <a
-                    key={index}
+                    key={idx}
                     href={social.url}
                     className="social-link"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.name}
                   >
-                    <span className="social-icon">{social.icon}</span>
+                    <i className={social.iconClass}></i>
                   </a>
                 ))}
               </div>
@@ -112,12 +87,9 @@ const Footer = () => {
             <div className="footer-section">
               <h3 className="section-title">Services</h3>
               <ul className="footer-links">
-                {services.map((service, index) => (
-                  <li key={index}>
-                    <button
-                      onClick={() => handleNavigation(service.path)}
-                      className="footer-link"
-                    >
+                {services.map((service, idx) => (
+                  <li key={idx}>
+                    <button onClick={() => handleNavigation(service.path)} className="footer-link">
                       {service.name}
                     </button>
                   </li>
@@ -129,12 +101,9 @@ const Footer = () => {
             <div className="footer-section">
               <h3 className="section-title">Company</h3>
               <ul className="footer-links">
-                {company.map((item, index) => (
-                  <li key={index}>
-                    <button
-                      onClick={() => handleNavigation(item.path)}
-                      className="footer-link"
-                    >
+                {company.map((item, idx) => (
+                  <li key={idx}>
+                    <button onClick={() => handleNavigation(item.path)} className="footer-link">
                       {item.name}
                     </button>
                   </li>
@@ -144,36 +113,21 @@ const Footer = () => {
 
             {/* Contact Info */}
             <div className="footer-section">
-              {/* <h3 className="section-title">Get In Touch</h3>
+              <h3 className="section-title">Get In Touch</h3>
               <div className="contact-info">
-                {contactInfo.map((contact, index) => (
-                  <div key={index} className="contact-item">
-                    <span className="contact-icon">{contact.icon}</span>
+                {contactInfo.map((contact, idx) => (
+                  <div key={idx} className="contact-item">
+                    <i className={contact.iconClass}></i>
                     <div className="contact-details">
                       <span className="contact-label">{contact.label}:</span>
                       {contact.link ? (
-                        <a href={contact.link} className="contact-value">
-                          {contact.value}
-                        </a>
+                        <a href={contact.link} className="contact-value">{contact.value}</a>
                       ) : (
                         <span className="contact-value">{contact.value}</span>
                       )}
                     </div>
                   </div>
                 ))}
-              </div> */}
-              
-              <div className="newsletter">
-                <h4>Stay Updated</h4>
-                <p>Get the latest insights on tech and design</p>
-                <div className="newsletter-form">
-                  <input 
-                    type="email" 
-                    placeholder="Enter your email" 
-                    className="newsletter-input"
-                  />
-                  <button className="newsletter-btn">→</button>
-                </div>
               </div>
             </div>
           </div>
@@ -188,24 +142,9 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} KXBYTE. All rights reserved.
             </div>
             <div className="footer-legal">
-              <button 
-                onClick={() => handleNavigation('/privacy')}
-                className="legal-link"
-              >
-                Privacy Policy
-              </button>
-              <button 
-                onClick={() => handleNavigation('/terms')}
-                className="legal-link"
-              >
-                Terms of Service
-              </button>
-              <button 
-                onClick={() => handleNavigation('/cookies')}
-                className="legal-link"
-              >
-                Cookie Policy
-              </button>
+              <button onClick={() => handleNavigation('/privacy')} className="legal-link">Privacy Policy</button>
+              <button onClick={() => handleNavigation('/terms')} className="legal-link">Terms of Service</button>
+              <button onClick={() => handleNavigation('/cookies')} className="legal-link">Cookie Policy</button>
             </div>
           </div>
         </div>
