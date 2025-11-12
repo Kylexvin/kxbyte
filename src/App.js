@@ -22,8 +22,9 @@ import AnalyticsPage from './pages/Admin/AnalyticsPage';
 import ShopManagement from './pages/Admin/ShopManagement';
 
 // ==================== AXIOS CONFIG ====================
-axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'https://kxtill.onrender.com/api';
+axios.defaults.baseURL = 'https://kxtill.onrender.com/api';
 axios.defaults.timeout = 10000;
+
 
 axios.interceptors.request.use(
   (config) => {
